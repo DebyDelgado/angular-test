@@ -1,0 +1,30 @@
+<h2>Products</h2>
+<div *ngFor="let product of products">
+  <!-- *ngFor el div se repite por cada producto de la lista -->
+  <h3>
+      <a [title]="product.name+' details '">
+        {{ product.name}}
+      </a>
+  </h3>
+      <!-- agregué el <a para que cada producto sea un link y el title es para que cuando pase por arriba con el cursor de algun producto se vea el nombre + details-->
+  <p *ngIf="product.description">
+    Description: {{product.description}}
+  </p>
+  <!-- *ngIf angular crea el <p> si el producto tiene description -->
+    <button type="button" (click)="share()">
+      Share
+    </button>
+<!-- al clickear share triggerea una alerta -->
+<app-product-alerts
+  [product]="product"
+  (notify)="onNotify()">
+<!-- agregue un componente para que cuando el producto con valor mayor de 700 pueda notificar al cliente cuando esté en sale -->
+
+</app-product-alerts>
+  </div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
